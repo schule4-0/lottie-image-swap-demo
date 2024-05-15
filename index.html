@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Lottie Demo</title>
+    <style>
+        #icon-container {
+            height: 500px;
+            width: 700px;
+            border: 1px solid black;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+  </head>
+  <body>
+    <div id="icon-container"></div>
+    <button id="btn">PLAY/PAUSE</button>
+    <button id="btnSwap">SWAP</button>
+	<script >
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('icon-container'), // required
+            path: 'empty-project.json', // required
+            renderer: 'svg', // required
+            loop: true, // optional
+            autoplay: true, // optional
+            name: "Demo Animation", // optional
+        });
+        console.log(animation)
+        document.getElementById("btn").onclick = () => {
+            console.log("paly")
+            if (animation.isPaused) {
+                animation.play()
+            } else {
+                animation.pause()
+            }
+        }
+        document.getElementById("btnSwap").onclick = () => {
+            console.log("swap")
+            const image = document.querySelector("image");
+            if (image.getAttribute("href") == "/assets/Logo_GG_transparent.png") {
+                image.setAttribute('href', "/assets/Logo-mark-S40.png")
+            } else {
+                image.setAttribute('href', "/assets/Logo_GG_transparent.png")
+            }
+            // animation.assets[0].p = "/assets/Logo_GG_transparent.png"
+        }
+    </script>
+  </body>
+</html>
